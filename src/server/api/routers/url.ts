@@ -15,7 +15,7 @@ export const urlRouter = createTRPCRouter({
         shortUrl : input.shortUrl
       });
     });
-    return {shortUrl : input.shortUrl};
+    return {shortUrl : input.shortUrl, domain : input.domain};
   }),
   getOriginalUrl : publicProcedure
   .input(z.object({shortUrl : z.string()}))
