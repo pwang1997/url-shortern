@@ -6,7 +6,7 @@ import {
   pgTableCreator,
   serial,
   timestamp,
-  varchar,
+  varchar
 } from "drizzle-orm/pg-core";
 
 /**
@@ -27,8 +27,5 @@ export const urls = createTable(
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
-  },
-  (url) => ({
-    // titleIndex: index("title_idx").on(post.title),
-  }),
+  }
 );
