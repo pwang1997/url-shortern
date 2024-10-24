@@ -18,7 +18,7 @@ const schema = z.object({
         invalid_type_error: 'Invalid Url Length'
     }),
 })
-export async function generateShortUrl(previousState, formData: FormData) {
+export async function generateShortUrl(previousState : unknown, formData: FormData) {
     const rawFormData = {
         longUrl: formData.get('longUrl'),
         domain: formData.get('domain'),
@@ -34,7 +34,7 @@ export async function generateShortUrl(previousState, formData: FormData) {
     console.log({ ...rawFormData, shortUrl });
 
     try {
-        const result = await api.url.createShortUrl({ domain: rawFormData.domain, longUrl: rawFormData.longUrl, shortUrl: shortUrl });
+        const result = await api.url.createShortUrl({ domain: rawFormData.domain as string, longUrl: rawFormData.longUrl as string, shortUrl: shortUrl });
         return {
             status : 'complete',
             message : result
