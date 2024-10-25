@@ -1,3 +1,4 @@
+import { eq } from "drizzle-orm";
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
@@ -19,7 +20,7 @@ export const urlRouter = createTRPCRouter({
   }),
   getOriginalUrl : publicProcedure
   .input(z.object({shortUrl : z.string()}))
-  .query(({input}) => {
-    return null;
+  .query(async({input, ctx}) => {
+    return await ctx.db.select({longUrl : urls.longUrl}).from(urls).where(eq(urls.shortUrl, input.shortUrl));
   })
 });
