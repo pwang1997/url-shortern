@@ -1,3 +1,4 @@
+import { usePathname } from "next/navigation";
 import { type Dispatch, type SetStateAction, useActionState, useCallback, useEffect } from "react";
 import { generateShortUrl } from "~/app/actions/generateShortUrl";
 import { Button } from "../ui/button";
@@ -13,14 +14,15 @@ export default function Form({ setShortUrl }: {
 }) {
 
     const [state, formAction] = useActionState(generateShortUrl, initialState);
+    const pathname = usePathname();
     
     useEffect(() => {
         if (state.status === 'complete') {
             const { shortUrl } = state.message as { shortUrl: string};
-            const newUrl = `${window.location.href}/shorten/${shortUrl}`;
+            const newUrl = `https://${window.location.hostname}/shorten/${shortUrl}`;
             setShortUrl(newUrl);
         }
-    }, [setShortUrl, state]);
+    }, [pathname, setShortUrl, state]);
 
     const renderErrorMessage = useCallback(() => {
         const { message } = state.message as { message: string };
