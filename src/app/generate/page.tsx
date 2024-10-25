@@ -28,6 +28,7 @@ export default function GenerateShortenUrlPage() {
                   value={shortUrl}
                   viewBox={`0 0 256 256`}
                 />
+                <a href={shortUrl}>{shortUrl}</a>
               </div>
             )
           }

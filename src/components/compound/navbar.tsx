@@ -8,8 +8,8 @@ export default async function TopNav() {
                 <NavigationMenu className="flex justify-between">
                     <NavigationMenuList>
                         <NavigationMenuItem>
-                            <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
-                                Home Icon
+                            <NavigationMenuLink href="/" className={`${navigationMenuTriggerStyle()} text-lg`}>
+                                Home
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                     </NavigationMenuList>
@@ -17,12 +17,6 @@ export default async function TopNav() {
 
                 <NavigationMenu className="flex justify-between">
                     <NavigationMenuList>
-                        <NavigationMenuItem>
-                            <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
-                                Home
-                            </NavigationMenuLink>
-                        </NavigationMenuItem>
-
                         <NavigationMenuItem>
                             <NavigationMenuLink href="/generate" className={`${navigationMenuTriggerStyle()} pt-0 pb-0 pl-0 pr-0`}>
                                 <Button>Get Started</Button>
